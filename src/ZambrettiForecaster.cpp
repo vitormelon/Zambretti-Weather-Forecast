@@ -1,30 +1,47 @@
 
-#include "ZambrettiForecaster.h";
+#include "ZambrettiForecaster.h"
 
-int ZambrettiForecaster::forecast(unsigned int pressure, int pressureTrend)
-{
+ZambrettiForecaster::ZambrettiForecaster(float deltaPressureToChangeTrend) {
+  _deltaPressureToChangeTrend = deltaPressureToChangeTrend;
+}
+// ZambrettiForecaster::~ZambrettiForecaster(){}
 
-  //  fall    Z = 130-10P/81
-  //  steady  Z = 147-50P/376
-  //  rise    Z = 179-20P/129
-
+int ZambrettiForecaster::forecast(unsigned int pressure, ZambrettiForecaster::TREND pressureTrend) {
   int result = 0;
 
-  switch (pressureTrend)
+  switch(pressureTrend)
   {
-  case 0: // pressure falling
-    result = 130 - 10 * pressure / 81;
-    break;
-  case 1: // pressure steady
-    result = 147 - 50 * pressure / 376;
-    break;
-  case 2: // pressure rising
-    result = 179 - 20 * pressure / 129;
-    break;
+    case FALLING:   // pressure falling
+      result = 127 - (0.12 * pressure);
+      break;
+    case STEADY:   // pressure steady
+      result = 144 - (0.13 * pressure);
+      break;
+    case RIZING:   // pressure rising
+      result = 185 - (0.16 * pressure) ;
+      break;
   }
 
   result = constrain(result, 1, 32);
   return result;
+}
+
+ZambrettiForecaster::TREND ZambrettiForecaster::getPressureTrendBy(float deltaPressurePerHour) {
+    if(isRising(deltaPressurePerHour)) {
+        return RIZING;
+    }
+    if(isFalling(deltaPressurePerHour)) {
+        return FALLING;
+    }
+    return STEADY;
+}
+
+bool ZambrettiForecaster::isRising(float deltaPressure) {
+    return deltaPressure > DELTA_PRESSURE_TO_CHANGE_TREND;
+}
+
+bool ZambrettiForecaster::isFalling(float deltaPressure) {
+    return deltaPressure < -DELTA_PRESSURE_TO_CHANGE_TREND;
 }
 
 int ZambrettiForecaster::constrain(int value, int max, int min) {
