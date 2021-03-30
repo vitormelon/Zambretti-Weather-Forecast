@@ -6,7 +6,7 @@ ZambrettiForecaster::ZambrettiForecaster(float deltaPressureToChangeTrend) {
 }
 // ZambrettiForecaster::~ZambrettiForecaster(){}
 
-int ZambrettiForecaster::forecast(unsigned int pressure, ZambrettiForecaster::TREND pressureTrend) {
+int ZambrettiForecaster::forecast(float pressure, ZambrettiForecaster::TREND pressureTrend) {
   int result = 0;
 
   switch(pressureTrend)
@@ -44,7 +44,7 @@ bool ZambrettiForecaster::isFalling(float deltaPressure) {
     return deltaPressure < -DELTA_PRESSURE_TO_CHANGE_TREND;
 }
 
-int ZambrettiForecaster::constrain(int value, int max, int min) {
+int ZambrettiForecaster::constrain(int value, int min, int max) {
   if(value > max) return max;
   if(value < min) return min;
   return value;

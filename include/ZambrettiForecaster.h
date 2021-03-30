@@ -10,7 +10,7 @@ public:
   enum TREND : int { FALLING, STEADY, RIZING };
 
   ZambrettiForecaster(float deltaPressureToChangeTrend = DELTA_PRESSURE_TO_CHANGE_TREND);
-  int forecast(unsigned int pressure, ZambrettiForecaster::TREND pressureTrend);
+  int forecast(float pressure, ZambrettiForecaster::TREND pressureTrend);
   ZambrettiForecaster::TREND getPressureTrendBy(float deltaPressure);
   
 
