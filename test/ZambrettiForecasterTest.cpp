@@ -78,7 +78,7 @@ int main( int argc, char **argv) {
     RUN_TEST(testGivenDiferentPressureTrendsWhenForecastProcessedThenShouldReturDifferentResults);
     RUN_TEST(testGivenExtremePressuresWhenForecastProcessedThenShouldReturTheExtremeValue);
     RUN_TEST(testGivenDiferentPressuresWhenKeepingTheTrendThenShouldReturDifferentResults);
-    RUN_TEST(testMelon);
+    RUN_TEST(testForecastText);
     UNITY_END();
 }
 
