@@ -1,6 +1,8 @@
 // #ifdef UNIT_TEST
 
 #include <unity.h>
+#include <string>
+#include <iostream>
 #include "ZambrettiForecaster.h"
 
 void testGivenRizingDeltaPressureWhenProcessedTrendShouldReturnRizing() {
@@ -60,6 +62,12 @@ void testGivenDiferentPressuresWhenKeepingTheTrendThenShouldReturDifferentResult
     
 }
 
+//TODO: Just made it work, now i need to give a better name and test all the cases
+void testForecastText() {
+    ZambrettiForecaster ZambrettiForecaster;
+    TEST_ASSERT_EQUAL_STRING("Settled Fine", ZambrettiForecaster.getForecastText(1).c_str());
+}
+
 
 
 int main( int argc, char **argv) {
@@ -70,6 +78,7 @@ int main( int argc, char **argv) {
     RUN_TEST(testGivenDiferentPressureTrendsWhenForecastProcessedThenShouldReturDifferentResults);
     RUN_TEST(testGivenExtremePressuresWhenForecastProcessedThenShouldReturTheExtremeValue);
     RUN_TEST(testGivenDiferentPressuresWhenKeepingTheTrendThenShouldReturDifferentResults);
+    RUN_TEST(testMelon);
     UNITY_END();
 }
 

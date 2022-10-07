@@ -2,6 +2,8 @@
   TODO:
     - Create method documentations
 */
+#include <string>
+using namespace std;
 
 class ZambrettiForecaster
 {
@@ -12,6 +14,7 @@ public:
   ZambrettiForecaster(float deltaPressureToChangeTrend = DELTA_PRESSURE_TO_CHANGE_TREND);
   int forecast(float pressure, ZambrettiForecaster::TREND pressureTrend);
   ZambrettiForecaster::TREND getPressureTrendBy(float deltaPressure);
+  string getForecastText(int zambrettiNumber);
   
 
 private:
