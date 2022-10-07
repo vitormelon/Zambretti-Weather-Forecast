@@ -1,4 +1,5 @@
 # Zambretti-Weather-Forecast
+[![.github/workflows/c-cpp.yml](https://github.com/vitormelon/Zambretti-Weather-Forecast/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/vitormelon/Zambretti-Weather-Forecast/actions/workflows/c-cpp.yml)
 Arduino Library that uses Zambretti Weather Forecast to forecast/predict the weather
 
 ## References
